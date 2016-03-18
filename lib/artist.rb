@@ -2,11 +2,12 @@
 # encoding: UTF-8
 
 class Artist
-  attr_accessor :name
+  attr_accessor :name, :songs
   @@all = []
 
   def initialize(name)
     @name = name
+    @songs = []
   end
 
   def self.all
@@ -24,6 +25,15 @@ class Artist
 
   def self.create(artist)
     Artist.new(artist).save
+  end
+
+  def add_song(song)
+    @songs << song unless @songs.include? song
+    song.artist = self unless song.artist
+  end
+
+  def genres
+    [].tap {|result| @songs.map{|s| result << s.genre}}.uniq
   end
 end
 
