@@ -2,6 +2,7 @@
 # encoding: UTF-8
 
 class Artist
+  extend Concerns::Findable
   attr_accessor :name, :songs
   @@all = []
 
