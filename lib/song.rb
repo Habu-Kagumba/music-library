@@ -38,5 +38,13 @@ class Song
     @genre = the_genre
     the_genre.songs << self unless the_genre.songs.include? self
   end
+
+  def self.find_by_name(song_name)
+    self.all.find {|song| song.name.eql? song_name}
+  end
+
+  def self.find_or_create_by_name(song_name)
+    self.find_by_name(song_name) || self.create(song_name)
+  end
 end
 
