@@ -25,7 +25,7 @@ class Song
     self
   end
 
-  def self.create(name)
+  def self.create(name, artist=nil, genre=nil)
     Song.new(name, artist, genre).save
   end
 
