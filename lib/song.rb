@@ -46,5 +46,27 @@ class Song
   def self.find_or_create_by_name(song_name)
     self.find_by_name(song_name) || self.create(song_name)
   end
+
+  def self.new_from_filename(filename)
+    artist, song, genre = song_nomenclature(filename)
+    Song.new(song,
+            Artist.find_or_create_by_name(artist),
+            Genre.find_or_create_by_name(genre.gsub(/.mp3/, '')))
+  end
+
+  def self.create_from_filename(filename)
+    artist, song, genre = song_nomenclature(filename)
+    Song.create(song,
+            Artist.find_or_create_by_name(artist),
+            Genre.find_or_create_by_name(genre.gsub(/.mp3/, '')))
+  end
+
+  def self.song_nomenclature(filename)
+    filename_parts = filename.split(' - ')
+    artist_, song_, genre_ = filename_parts
+    return artist_, song_, genre_
+  end
+
+  private_class_method :song_nomenclature
 end
 
