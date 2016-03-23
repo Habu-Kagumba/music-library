@@ -39,6 +39,10 @@ class Song
     the_genre.songs << self unless the_genre.songs.include? self
   end
 
+  def to_s
+    "#{self.artist.name} - #{self.name} - #{self.genre.name}"
+  end
+
   def self.find_by_name(song_name)
     self.all.find {|song| song.name.eql? song_name}
   end
