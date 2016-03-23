@@ -10,12 +10,11 @@ class MusicImporter
 
   def files
     Dir[File.join(@path, '*.mp3')].map do |file|
-      file.gsub(/#{@path}\//, '')
+      File.basename file
     end
   end
 
   def import
-    files.each {|file| Song.create_from_filename(file)}
+    files.each { |file| Song.create_from_filename(file) }
   end
 end
-
