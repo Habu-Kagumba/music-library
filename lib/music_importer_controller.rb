@@ -4,19 +4,19 @@
 class MusicLibraryController
   attr_reader :path
 
-  def initialize(path='./db/mp3s')
+  def initialize(path = './db/mp3s')
     MusicImporter.new(path).import
   end
 
   def music_cli_opts
-  {
-    'list songs' => :list_songs,
-    'list artists' => :list_artists,
-    'list genres' => :list_genres,
-    'play song' => :play_song,
-    'list artist' => :list_artist,
-    'list genre' => :list_genre,
-  }
+    {
+      'list songs' => :list_songs,
+      'list artists' => :list_artists,
+      'list genres' => :list_genres,
+      'play song' => :play_song,
+      'list artist' => :list_artist,
+      'list genre' => :list_genre
+    }
   end
 
   def welcome
@@ -42,13 +42,13 @@ class MusicLibraryController
   def	call
     puts welcome
     puts help
-    input= ""
-    while input != "exit"
-      (" ♯ ~ ".red).display
+    input = ''
+    while input != 'exit'
+      " ♯ ~ ".red.display
       input = gets.chomp
       if music_cli_opts.include? input
         send(music_cli_opts[input])
-      elsif input.eql? "exit"
+      elsif input.eql? 'exit'
         puts "Bye 👋".blue
       else
         puts help
@@ -64,29 +64,29 @@ class MusicLibraryController
 
   def list_artists
     Song.all.each do |song|
-      puts "#{song.artist}".blue
+      puts song.artist.to_s.blue
     end
   end
 
   def list_genres
     Song.all.each do |song|
-      puts "#{song.genre}".blue
+      puts song.genre.to_s.blue
     end
   end
 
   def play_song
-    puts "Please enter the song number.".white.on_red
+    puts 'Please enter the song number.'.white.on_red
     song_no = gets.strip.to_i
-    puts "🔊  Playing #{Song.all[song_no-1]}".blue
+    puts "🔊  Playing #{Song.all[song_no - 1]}".blue
   end
 
   def list_artist
-    puts "Please enter the artist name.".white.on_red
+    puts 'Please enter the artist name.'.white.on_red
     artist_name = gets.strip
     artist_ = Artist.find_by_name(artist_name)
     if artist_
       artist_.songs.each do |s|
-        puts "#{s}".blue
+        puts s.to_s.blue
       end
     else
       puts "🚷  Artist not found!".red
@@ -94,17 +94,15 @@ class MusicLibraryController
   end
 
   def list_genre
-    puts "Please enter the genre.".white.on_red
+    puts 'Please enter the genre.'.white.on_red
     genre_name = gets.strip
     genre_ = Genre.find_by_name(genre_name)
     if genre_
       genre_.songs.each do |s|
-        puts "#{s}".blue
+        puts s.to_s.blue
       end
     else
       puts "🚫  Genre not found!".red
     end
   end
-
 end
-

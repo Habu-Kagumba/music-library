@@ -34,11 +34,10 @@ class Artist
   end
 
   def genres
-    [].tap {|result| @songs.map{|s| result << s.genre}}.uniq
+    @songs.map(&:genre).uniq
   end
 
   def to_s
-    self.name
+    name
   end
 end
-
