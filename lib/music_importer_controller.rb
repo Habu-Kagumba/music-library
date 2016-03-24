@@ -39,7 +39,7 @@ class MusicLibraryController
     ".yellow
   end
 
-  def	call
+  def call
     puts welcome
     puts help
     input = ''
