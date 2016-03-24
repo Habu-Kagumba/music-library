@@ -63,15 +63,11 @@ class MusicLibraryController
   end
 
   def list_artists
-    Song.all.each do |song|
-      puts song.artist.to_s.blue
-    end
+    puts [].tap { |result| Song.all.each { |x| result << x.artist } }.uniq
   end
 
   def list_genres
-    Song.all.each do |song|
-      puts song.genre.to_s.blue
-    end
+    puts [].tap { |result| Song.all.each { |x| result << x.genre } }.uniq
   end
 
   def play_song
