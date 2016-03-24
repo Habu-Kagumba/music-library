@@ -39,7 +39,7 @@ To start the library cli execute the `musiclibrary` file in the `bin` directory
 $  bin/musiclibrary
 
   ----------------------------
-  Welcome to Music Library :musical_note:
+  Welcome to Music Library
   ----------------------------
 
   Commands:
@@ -58,13 +58,14 @@ $  bin/musiclibrary
 ### Example command usage:
 
 1. `list songs`:
+    
     ```bash
-	 ♯ ~ list songs
-	1. Action Bronson - Larry Csonka - indie
-	2. Adele - Rolling In the Deep - folk
-	3. Adele - Someone Like You - country
-	4. AraabMuzik - Streetz Tonight - folk
-	5. ASAP Rocky - Peso - dance
+     ♯ ~ list songs
+    1. Action Bronson - Larry Csonka - indie
+    2. Adele - Rolling In the Deep - folk
+    3. Adele - Someone Like You - country
+    4. AraabMuzik - Streetz Tonight - folk
+    5. ASAP Rocky - Peso - dance
     6. Atlas Sound - Mona Lisa - pop
     7. Azealia Banks - 212 - hip-hop
     8. Battles - Ice Cream (Feat. Matias Aguayo) - rock
@@ -72,14 +73,16 @@ $  bin/musiclibrary
     ...
 	```
 2. `play song` e.g. enter "1" for the first song:
-	```bash
+    
+    ```bash
      ♯ ~ play song
 	Please enter the song number.
 	1
-	:speaker: Playing Action Bronson - Larry Csonka - indie
+	Playing Action Bronson - Larry Csonka - indie
 
     ```
 3. `list artist` e.g enter "Adele":
+	
 	```bash
      ♯ ~ list artist
     Please enter the artist name.
@@ -92,7 +95,7 @@ $  bin/musiclibrary
 
 You need to have installed test dependencies. If you ran:
 ```bash
-    $  bundle install
+$  bundle install
 ```
 You are good and can continue to testing the application. Otherwise proceed to install all dependencies.
 
